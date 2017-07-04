@@ -1,0 +1,16 @@
+version: '2.0'
+
+services:
+
+  db:
+    build: ./db
+    image: docker-caldav-carddav-db
+
+  davical:
+    build: ./davical
+    image: docker-caldav-carddav-davical
+    ports:
+     - "8888:80"
+    links:
+     - "db:postgres"
+
